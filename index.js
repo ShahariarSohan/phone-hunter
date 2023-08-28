@@ -32,12 +32,21 @@ const phoneCollection = phones => {
             `
         phoneContainer.appendChild(phoneCard)
     });
+    loadingSpinner(false)
 
 }
 const buttonLoad = () => {
-    const loadingSpinner = document.getElementById('loading')
-    loadingSpinner.classList.remove('hidden')
+    loadingSpinner(true)
     const input = document.getElementById('input')
     const searchText = input.value
     phoneLoad(searchText)
+}
+const loadingSpinner = (isLoading) => {
+    const loading = document.getElementById('loading')
+    if (isLoading) {
+        loading.classList.remove('hidden')
+    }
+    else {
+        loading.classList.add('hidden')
+    }
 }
