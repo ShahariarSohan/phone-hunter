@@ -6,11 +6,12 @@ const phoneLoad = async (searchText) => {
 }
 const phoneCollection = phones => {
     phones = phones.slice(0, 12)
+    const showAllButton = document.getElementById('show-all')
     if (phones.length >= 12) {
-        document.getElementById('show-all').classList.remove('hidden')
+        showAllButton.classList.remove('hidden')
     }
     else {
-        document.getElementById('show-all').classList.add('hidden')
+        showAllButton.classList.add('hidden')
     }
     const phoneContainer = document.getElementById('phone-container')
     phoneContainer.textContent = ''
@@ -34,6 +35,8 @@ const phoneCollection = phones => {
 
 }
 const buttonLoad = () => {
+    const loadingSpinner = document.getElementById('loading')
+    loadingSpinner.classList.remove('hidden')
     const input = document.getElementById('input')
     const searchText = input.value
     phoneLoad(searchText)
