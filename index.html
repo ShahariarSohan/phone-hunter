@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -14,6 +14,16 @@
   <body class="container mx-auto">
     <header class="text-center text-5xl font-bold">Phone Hunter</header>
     <main>
+      <section class="bg-gray-400 shadow-xl p-5 m-5">
+        <input
+          id="input"
+          type="text"
+          placeholder="Type here"
+          class="input w-full max-w-xs"
+        /><button onclick="buttonLoad()" class="btn btn-secondary">
+          Search
+        </button>
+      </section>
       <section>
         <div
           id="phone-container"

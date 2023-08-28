@@ -8,7 +8,6 @@ phoneLoad()
 const phoneCollection = phones => {
     const phoneContainer = document.getElementById('phone-container')
     phones.forEach(phone => {
-        console.log(phone)
         const phoneCard = document.createElement('div')
         phoneCard.classList = "card  bg-base-100 shadow-xl p-5"
         phoneCard.innerHTML = `        
@@ -24,4 +23,9 @@ const phoneCollection = phones => {
             `
         phoneContainer.appendChild(phoneCard)
     });
+}
+const buttonLoad = () => {
+    const input = document.getElementById('input')
+    const searchText = input.value
+    console.log(searchText)
 }
