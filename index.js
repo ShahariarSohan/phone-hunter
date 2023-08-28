@@ -4,11 +4,11 @@ const phoneLoad = async (searchText) => {
     const phones = data.data
     phoneCollection(phones)
 }
-phoneLoad()
 const phoneCollection = phones => {
     const phoneContainer = document.getElementById('phone-container')
     phoneContainer.textContent = ''
     phones.forEach(phone => {
+        console.log(phone)
         const phoneCard = document.createElement('div')
         phoneCard.classList = "card  bg-base-100 shadow-xl p-5"
         phoneCard.innerHTML = `        
