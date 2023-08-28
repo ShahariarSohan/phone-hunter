@@ -5,6 +5,13 @@ const phoneLoad = async (searchText) => {
     phoneCollection(phones)
 }
 const phoneCollection = phones => {
+    phones = phones.slice(0, 12)
+    if (phones.length >= 12) {
+        document.getElementById('show-all').classList.remove('hidden')
+    }
+    else {
+        document.getElementById('show-all').classList.add('hidden')
+    }
     const phoneContainer = document.getElementById('phone-container')
     phoneContainer.textContent = ''
     phones.forEach(phone => {
