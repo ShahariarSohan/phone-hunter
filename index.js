@@ -1,3 +1,4 @@
+//data receive,load and show
 const phoneLoad = async (searchText) => {
     const res = await fetch(`https://openapi.programming-hero.com/api/phones?search=${searchText}`)
     const data = await res.json()
@@ -5,7 +6,6 @@ const phoneLoad = async (searchText) => {
     phoneCollection(phones)
 }
 const phoneCollection = phones => {
-    phones = phones.slice(0, 12)
     const showAllButton = document.getElementById('show-all')
     if (phones.length >= 12) {
         showAllButton.classList.remove('hidden')
@@ -13,6 +13,9 @@ const phoneCollection = phones => {
     else {
         showAllButton.classList.add('hidden')
     }
+
+    phones = phones.slice(0, 12)
+
     const phoneContainer = document.getElementById('phone-container')
     phoneContainer.textContent = ''
     phones.forEach(phone => {
@@ -26,7 +29,7 @@ const phoneCollection = phones => {
                 <p>There are many variations of passages of available, but the majority have suffered</p>
                 <h2 class="text-2xl font-bold">$900</h2>
                 <div class="card-actions justify-center">
-                <button class="btn btn-primary">Show Details</button>
+                <button onclick="showDetailsButton('${phone.slug}')"class="btn btn-primary">Show Details</button>
                 </div>
             </div>        
             `
@@ -35,12 +38,14 @@ const phoneCollection = phones => {
     loadingSpinner(false)
 
 }
+//button handler
 const buttonLoad = () => {
     loadingSpinner(true)
     const input = document.getElementById('input')
     const searchText = input.value
     phoneLoad(searchText)
 }
+//adding loading spinner
 const loadingSpinner = (isLoading) => {
     const loading = document.getElementById('loading')
     if (isLoading) {
@@ -49,4 +54,11 @@ const loadingSpinner = (isLoading) => {
     else {
         loading.classList.add('hidden')
     }
+}
+//show modal with dynamic data
+const showDetailsButton = async (id) => {
+    console.log(`Phone Model is :${id}`)
+    const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`)
+    const data = await res.json()
+    console.log(data)
 }
